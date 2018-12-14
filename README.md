@@ -17,7 +17,7 @@ This program is a car-rental booking system that allows the car-rental company t
 
 ## **2. Data**
 The program uses two csv datasets, one named cars.csv and the other booking.csv.
-You can find them [here](https://github.com/margreta/car-rental/tree/master/Iceberg_classes/data).
+You can find them [here](https://github.com/margreta/Three-week-course/tree/master/NYTT/data).
 
 
 
