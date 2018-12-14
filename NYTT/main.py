@@ -51,15 +51,13 @@ def main():
         if username == "dealer":
             to_dealer_homepage = "y"
             while to_dealer_homepage == "y":
+                continue_to_get_to_homepage = "n"
                 dealer_choice = navigation.go_to_dealer_homepage()
                 if dealer_choice == 1:
                     #All 5 pages of create booking process. 
                     name, driver_license, email, phone_num, current_page = navigation.create_booking_page_1_of_5(confirm)
                     unfinished = True
-                    break_to_get_to_homepage = "y"
                     while unfinished:
-                        if break_to_get_to_homepage == "y":
-                            break
                         continue_vs_go_to_dealer_homepage = dealer_ui.options()
                         if continue_vs_go_to_dealer_homepage == "1":
                             if current_page == 1:
@@ -70,10 +68,13 @@ def main():
                                 total_price, kasko_child, car_pick, current_page = navigation.create_booking_page_4_of_5(inp_car_type,current_page,start_date)
                                 unfinished = False
                         elif continue_vs_go_to_dealer_homepage == "2":
-                            break_to_get_to_homepage = "y"
+                            continue_to_get_to_homepage = "y"
+                            unfinished = False
                             to_dealer_homepage = "y"
                             continue
-
+                    
+                    if continue_to_get_to_homepage == "y":
+                            continue
 
                     unconfirmed_billing_type = True
                     while unconfirmed_billing_type:
@@ -114,6 +115,7 @@ def main():
                     #Edit booking.
                     if change_choice == 1:
                         navigation.edit_booking()
+                    #Cancel booking.
                     elif change_choice == 2:
                         change_booking.cancel_booking()
                 #DEALER : return rental

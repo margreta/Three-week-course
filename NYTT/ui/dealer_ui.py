@@ -207,13 +207,20 @@ class Dealer_Ui:
                 self.__car_service.car_choice(car_pick,start_date,tday_str) #bætti start_date við
                 car_picking = True
             except:
-                print("Whoops") #laga?
-        return car_pick,tday_str
+                print("Car does not excist.") 
+        return car_pick
 
     def extras(self):
-        print("Extras: ")
-        extras_option = input("1. Kasko insurance\n2. Child seat\n3. Kasko insurance and child seat\n4. No extras\n")
-        print("")
+        extras_option = 7
+        while extras_option in range(1,5):
+            # try: 
+            print("Extras: ")
+            extras_option = input("1. Kasko insurance\n2. Child seat\n3. Kasko insurance and child seat\n4. No extras\n")
+            print("")
+            # self.dealer_service.extras_menu_check(extras_option)#kalla á service fall
+            # except:
+            #     print("Please choose a valid option or number from 1 to 4")
+            #     print("")
         return extras_option
         
     def create_booking_5_of_5(self):
@@ -228,11 +235,28 @@ class Dealer_Ui:
 
     def credit_debit_card(self):
         card_name = input("Enter name of carholder: ")
-        card_number = input("Enter card number: ")
-        validation_time = input("Enter validation time (M/YY): ")
-            # Setja hér tékk hvort validation_time sé "stærri" tala en dagurinn í dag 
-            # ef svo er þá kemur villa að kortið sé útrunnið
-        return card_name, card_number, validation_time
+        card_not_valid = True #SARA
+        while card_not_valid:
+            card = False
+            while card == False:
+                try: 
+                    card_num = input("Enter the card number : ")
+                    self.dealer_service.cb_check_card_num(card_num)
+                    card = True
+                except:
+                    print("Card number has 16 numbers, please do not use space or '-' between numbers.")
+                is_valid = False
+            while is_valid == False:
+                try: 
+                    validation_time = input("Enter validation time (M/YY): ")
+                    self.dealer_service.check_if_card_is_valid(validation_time)
+                    is_valid = True
+                    card_not_valid = False
+                except:
+                    print("Card is outdated or wrongly inserted please use M/YY format, please try again!")
+                    card_not_valid = True
+                    is_valid = True
+        return card_name, card_num, validation_time
 
     def confirm_billing(self):
         confirm = input("Confirm payment? (y/n): ")

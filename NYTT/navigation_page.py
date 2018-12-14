@@ -135,14 +135,19 @@ class Navigation_Page:
         while name_test== False:
             name, name_test = self.change_booking.find_edit_booking_name()
         edit_choice = self.change_booking.edit_booking_menu()
+        #If name is changed
         if edit_choice == 1:
             self.change_booking.edit_name(name)
+        #If drivers license is changed
         elif edit_choice == 2: 
             self.change_booking.edit_drivers_license(name)
+        #If email is changed
         elif edit_choice == 3:
             self.change_booking.edit_email(name)
+        #If phone number is changed
         elif edit_choice == 4:
             self.change_booking.edit_phone_number(name)
+        #If credit card number is changed
         elif edit_choice == 5:
             self.change_booking.edit_credit_card_insurance(name)
 

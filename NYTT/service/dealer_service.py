@@ -82,6 +82,11 @@ class Dealer_service:
             raise Exception
         self.car_repo.return_rental(license_num)
 
+    #Extras menu.
+    def extras_menu_check(self,extras_option):
+        if extras_option not in range (1,5):
+            raise Exception 
+
     #Change booking.
     def change_check(self, change_choice):
         if change_choice not in range (1,4):
