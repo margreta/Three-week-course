@@ -103,7 +103,7 @@ def main():
                             if confirm_payment == "y":
                                 booking_status = "New"
                                 #print the reciept.
-                                dealer_ui.create_booking_6_of_5_recipt(name,driver_license,email,phone_num, price, kasko_child, total_amount, car_pick)
+                                dealer_ui.create_booking_6_of_5_recipt(name,driver_license,email,phone_num, price, kasko_child, total_amount, car_pick,amount_of_days)
                                 #Create the booking in csv file.
                                 dealer_ui.create_the_booking(name, driver_license, email, phone_num,card_num, start_date, end_date,car_pick, inp_car_type, total_amount,kasko_child , type_of_billing, booking_status)
                                 unconfirmed_billing_type = False

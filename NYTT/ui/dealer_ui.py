@@ -278,7 +278,7 @@ class Dealer_Ui:
     def print_change(self, change):
         print("Change: {}".format(change))
 
-    def create_booking_6_of_5_recipt(self,name,driver_license,email,phone_num, price,extras_option, total_price, car_pick):
+    def create_booking_6_of_5_recipt(self,name,driver_license,email,phone_num, price,extras_option, total_price, car_pick, amount_of_days):
         print("{:<20}  {:<21}  {:<20}  {:<15}  {:<10}".format("Name", "Driver license number","Car license plate", "Email", "Phone number"))
         print("-"*95) 
         print("{:<20}  {:<21}  {:<20}  {:<15}  {:<10}".format(name, driver_license, car_pick, email, phone_num))
@@ -292,7 +292,7 @@ class Dealer_Ui:
         elif extras_option == "No extras":
             extras_amount = 0
         print("Price per day: ${:>}".format(price))
-        print("Extras: ${:>}".format(extras_amount))
+        print("Extras: ${:>}".format(extras_amount*amount_of_days))
         print("Total Price: ${:>}\n".format(total_price))
         
 
