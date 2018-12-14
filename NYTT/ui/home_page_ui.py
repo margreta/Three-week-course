@@ -6,10 +6,20 @@ class Home_page:
 
     def __init__(self):
         self.home_service = Home_service()
-
+    
+    def logo(self):
+        pass
+        print(""" 
+         _   _____  _____  _____  _____  ____    _____ 
+        |   | |       ||       ||  _    ||       ||    _ |  |       |
+        |   | |       ||    ___|| |_|   ||    ___||   | ||  |    ___|
+        |   | |       ||   |___ |       ||   |___ |   |_||_ |   | __ 
+        |   | |      ||    ___||  _   | |    ___||    _  ||   ||  |
+        |   | |     |_ |   |___ | |_|   ||   |___ |   |  | ||   |_| |
+        |___| |_______||_______||_______||_______||___|  |_||_______|""")
     def home(self):
         """prints the homepage and prompts for user to choose an operator"""
-        
+                
         #Header:
         print("HOME")
         print("-" * 20)
@@ -26,7 +36,9 @@ class Home_page:
             except:
                 print("Available choices are 1 or 2, please try again!")
         return user
-    
+
+
+
     def log_in(self,user):
         """prints the log-in site and prompts for username and password"""
         #Header:
