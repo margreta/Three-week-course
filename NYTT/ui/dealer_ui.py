@@ -211,7 +211,7 @@ class Dealer_Ui:
         return car_pick
 
     def extras(self):
-        extras_option = 7
+        extras_option = 4
         while extras_option in range(1,5):
             # try: 
             print("Extras: ")
