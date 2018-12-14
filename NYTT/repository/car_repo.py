@@ -12,6 +12,7 @@ class Car_Repo:
             status = car.get_status()
             cars_file.write("{},{},{},{}\n".format(license_num.upper(), car_type.upper(),price, status))
 
+
     def mark_repair(self, repair_choice, license_num):
         with open("./data/car.csv", "r+") as csv_file:
             csv_reader = csv.DictReader(csv_file)
@@ -117,25 +118,25 @@ class Car_Repo:
                 print("Car not found.")          
 
 
-    def mark_as_rented(self, car_pick):
-        with open("./data/car.csv", "r+") as csv_file:
-            csv_reader = csv.DictReader(csv_file)
+    def mark_as_rented(self, car_pick,start_date,tday_str): 
+            with open("./data/car.csv", "r+") as csv_file:
+                csv_reader = csv.DictReader(csv_file)
 
-            with open("./data/new_cars.csv", "a+", newline="") as new_file:
-                fieldnames = ["License_plate", "Type", "Price","Status"]
+                with open("./data/new_cars.csv", "a+", newline="") as new_file:
+                    fieldnames = ["License_plate", "Type", "Price","Status"]
 
-                csv_writer = csv.DictWriter(new_file, fieldnames = fieldnames)
-                csv_writer.writeheader()
+                    csv_writer = csv.DictWriter(new_file, fieldnames = fieldnames)
+                    csv_writer.writeheader()
 
-                for line in csv_reader:
-                    if car_pick in line.values():
-                        line["Status"] = "Rented"
+                    
+                    for line in csv_reader:
+                        if car_pick in line.values():
+                            if start_date == tday_str: #sara
+                                line["Status"] = "Rented"
                         csv_writer.writerow(line)
-                    else:
-                        csv_writer.writerow(line)
-    
-        os.remove("./data/car.csv")
-        os.rename("./data/new_cars.csv","./data/car.csv")
+            
+            os.remove("./data/car.csv")
+            os.rename("./data/new_cars.csv","./data/car.csv")
 
     def show_cancelled_rented_car(self,name):
         with open("./data/booking.csv", "r",encoding = "utf-8") as car_book_file:

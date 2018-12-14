@@ -81,7 +81,7 @@ class Navigation_Page:
         return price 
 
 
-    def create_booking_page_4_of_5(self,inp_car_type,current_page):
+    def create_booking_page_4_of_5(self,inp_car_type,current_page,start_date):
         """Calculates extras and returns total price"""
         #initiate the price counter.
         total_price = 0 
