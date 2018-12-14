@@ -155,10 +155,7 @@ class Dealer_Ui:
         print("DEALER/ Create booking")
         print("-" * 20)
         print("(3 of 5)")
-
-        print("Please select date")
-        print("")
-
+        print("Please select date\n")
 
         try:
             #The end date is calculated in the main.py
@@ -181,7 +178,6 @@ class Dealer_Ui:
     def print_end_date(self,end_date):
         print("Return day: ", end_date)
         
-       
 
     def create_booking_4_of_5(self,inp_car_type):
         #Header:

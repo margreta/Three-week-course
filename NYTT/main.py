@@ -35,11 +35,14 @@ def billing_type_3(dealer_ui, total_amount):
 def main():
     #initiate the navigation class.
     navigation = Navigation_Page()
+    home_page = Home_page()
     dealer_ui = Dealer_Ui()
     admin_ui = Admin_Ui()
+    change_booking = Change_Booking_Ui()
     
     to_homepage = True
     while to_homepage:
+        home_page.logo()
         user = navigation.go_to_homepage()
         username = navigation.go_to_login(user)
 
@@ -102,22 +105,12 @@ def main():
 
                 #DEALER : change booking
                 elif dealer_choice == 2:
-                    change_choice = cb.change_booking_menu()
+                    change_choice = navigation.go_to_change_booking()
                     #Edit booking.
                     if change_choice == 1:
-                        name = cb.find_edit_booking_name()
-                        e_choice = cb.edit_booking_menu() #e_choice stands for edit_choice
-                        #If name is changed
-                        if e_choice == 1:
-                            cb.edit_name(name)
-                        #If drivers license is changed
-                        elif e_choice == 2:
-                            cb.edit_drivers_license(name)
-                        #If email is changed
-                        elif e_choice == 3:
-                            pass
+                        navigation.edit_booking()
                     elif change_choice == 2:
-                        cb.cancel_booking()
+                        change_booking.cancel_booking()
                 #DEALER : return rental
                 elif dealer_choice == 3:
                     rr.return_rental_ui()

@@ -95,7 +95,7 @@ class Dealer_service:
         self.booking_repo.look_up_customer_by_name(name)#Kalla á fall sem les bara skrá enn breytir ekki.
 
     def edit_menu_check(self, edit_choice):
-        if edit_choice not in range (1,10):
+        if edit_choice not in range (1,6):
             raise Exception
 
     def edit_name_check(self,name,edit_name):
@@ -103,6 +103,17 @@ class Dealer_service:
 
     def edit_drivers_license_check(self,name,edit_drivers_license):
         self.booking_repo.edit_booking_driver_license(name, edit_drivers_license)
+
+    def edit_email_check(self, name, edit_email):
+        self.booking_repo.edit_booking_email(edit_email,name)
+
+    def edit_phone_number(self,name,edit_phone_number):
+        #Á eftir að gera villu check
+        #Sigga
+        self.booking_repo.edit_booking_phone_number(name, edit_phone_number)
+    
+    def edit_credit_card_insurance_check(self,edit_credit_card_info,name):
+        self.booking_repo.edit_booking_credit_card_insurance(edit_credit_card_info,name)
 
     #Cancel booking.
     def cancel_check(self, name):

@@ -16,8 +16,8 @@ class Navigation_Page:
         self.admin_ui = Admin_Ui()
         self.home_page = Home_page()
         self.overview_ui = Overview_Ui()
-        self.rr = Return_Rental()
-        self.cb = Change_Booking_Ui()
+        self.return_rental = Return_Rental()
+        self.change_booking = Change_Booking_Ui()
 ##########################################################################
   # HOME PAGE
 
@@ -29,7 +29,7 @@ class Navigation_Page:
         username = self.home_page.log_in(user)
         return username
 ##########################################################################
-  # DEALER 
+  # DEALER - Create booking
 
     def go_to_dealer_homepage(self):
         dealer_choice = self.dealer_ui.home_page()
@@ -122,16 +122,22 @@ class Navigation_Page:
         billing_type = self.dealer_ui.create_booking_5_of_5()
         return total_amount, billing_type
         
+#######################################################################################    
+
+    # DEALER - Change booking
+
+    def go_to_change_booking(self):
+        change_choice = self.change_booking.change_booking_menu()
+        return change_choice
+
+    def edit_booking(self):
+        name = self.change_booking.find_edit_booking_name()
+        edit_choice = self.change_booking.edit_booking_menu()
+        if edit_choice == 1:
+            self.change_booking.edit_name(name)
+        elif edit_choice == 2: 
+            self.change_booking.edit_drivers_license(name)
+        elif edit_choice == 3:
+            pass
+        
     
-
-
-
-
-
-    # def create_booking_page_4_of_5(self):
-
-
-
-
-    # def go_to_overview_ui(self):
-    #     self.overview_ui.
