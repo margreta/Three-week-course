@@ -35,8 +35,8 @@ _**booking.csv**_ contains information about each and every customer who has eve
 
 Name | Drivers license | Email | Phone number | *Credit card information | Start date | End date | License plate | type | price | Extras | Billing type | Booking status  
 -----|-----------------|-------|--------------|-------------------------|---------------|----------|---------------|------|-------|--------|--------------|---------------
-Anna Einarsdóttir|123436000|annacool@gmail.com|898-0032|"4543843343242342;02/18;233|2/3/2018|5/3/2018|OFD73|A|4000|Car seat|Debit card|New
-Sigga Guðmundsdóttir|123246999|siggacool@gmail.com|432-4322|"4232234234788764;05/29;343|10/10/2018|15/10/2018|KSA55|B|3000|Kasko insurance|Cash|Cancelled
+Anna Einarsdóttir|123436000|annacool@gmail.com|8980032|"4543843343242342|2/3/2018|5/3/2018|OFD73|A|4000|Car seat|Debit card|New
+Sigga Guðmundsdóttir|123246999|siggacool@gmail.com|4324322|"4232234234788764|10/10/2018|15/10/2018|KSA55|B|3000|Kasko insurance|Cash|Cancelled
 
 
 *Credit card information stores the validation time of the car and the CVC number.
