@@ -82,59 +82,72 @@ class Dealer_Ui:
         return first_name, last_name, driver_license, email, phone_num
 
     def confirm_customer(self, first_name, last_name):
-        confirm = input("Confirm customer information? (y/n)".lower())
+        unconfirmed = True
+        while unconfirmed:
+            try:
+                confirm = input("Confirm customer information? (y/n)".lower())
+                self.admin_service.y_and_n_validation(confirm)
+                unconfirmed = False
+            except: 
+                print("Please use 'y' or 'n' to confirm!")
         if confirm == "y":
             print("{} {} has been added to system\n".format(first_name.capitalize(), last_name.capitalize()))
-        elif confirm == "n":
-            print("Please choose action from the options list\n.")
         return confirm
-     
+    
     def options(self):
         print("Options: ")
-        contin = input("1. Continue\n2. Go back\n3. Go to homepage\n")
+        
+        no_ecxeption = True
+        while no_ecxeption:
+            try:
+                contin = input("1. Continue\n2. Go to homepage\n")
+                self.dealer_service.option_check(contin)
+                no_ecxeption = False
+            except:
+                print("Available choices are 1 or 2, please try again!")
         print("")
         return contin
         
     def create_booking_2_of_5(self,name):
-            #Header:
-            print("DEALER/ Create booking")
-            print("-" * 20)
-            print("(2 of 5)")
-            print("The insurance of the rent\n")
-            
-            card_not_valid = True #SARA
-            while card_not_valid:
-                card = False
-                while card == False:
-                    try: 
-                        card_num = input("Enter the card number : ")
-                        self.dealer_service.cb_check_card_num(card_num)
-                        card = True
-                    except:
-                        print("Card number has 16 numbers, please do not use space or '-' between numbers.")
-                    is_valid = False
-                while is_valid == False:
-                    try: 
-                        validation_date= input("Enter the validation time (M/YY): ")
-                        self.dealer_service.check_if_card_is_valid(validation_date)
-                        is_valid = True
-                        card_not_valid = False
-                    except:
-                        print("Card is outdated, please use card with valid validation time.")
-                        card_not_valid = True
-                        is_valid = True
-                    
-            cvc = False
-            while cvc == False:
+        #Header:
+        print("DEALER/ Create booking")
+        print("-" * 20)
+        print("(2 of 5)")
+        print("The insurance of the rent\n")
+        
+        card_not_valid = True #SARA
+        while card_not_valid:
+            card = False
+            while card == False:
                 try: 
-                    cvc_num = input("Enter CVC (three numbers positioned on the back of the card): ")
-                    self.dealer_service.cb_check_cvc(cvc_num)
-                    cvc = True
-                except: 
-                    print("The cvc is three digits, all numbers, please try again!\n")
+                    card_num = input("Enter the card number : ")
+                    self.dealer_service.cb_check_card_num(card_num)
+                    card = True
+                except:
+                    print("Card number has 16 numbers, please do not use space or '-' between numbers.")
+                is_valid = False
+            while is_valid == False:
+                try: 
+                    validation_date= input("Enter the validation time (M/YY): ")
+                    self.dealer_service.check_if_card_is_valid(validation_date)
+                    is_valid = True
+                    card_not_valid = False
+                except:
+                    print("Card is outdated or wrongly inserted please use M/YY format, please try again!")
+                    card_not_valid = True
+                    is_valid = True
+                
+        cvc = False
+        while cvc == False:
+            try: 
+                cvc_num = input("Enter CVC (three numbers positioned on the back of the card): ")
+                self.dealer_service.cb_check_cvc(cvc_num)
+                cvc = True
+            except: 
+                print("The cvc is three digits, all numbers, please try again!\n")
 
-            print("Card information has been saved for {}\n".format(name))
-            return card_num, validation_date, cvc
+        print("Card information has been saved for {}\n".format(name))
+        return card_num, validation_date, cvc
 
 
     def create_booking_3_of_5(self):
@@ -207,7 +220,7 @@ class Dealer_Ui:
         print("(5 of 5)\n")
         
         print("Please choose billing type\n")
-        billing_type = input("1. Credit or debit card\n2. Billing to\n3. Cash\n4. Go back\n5. Go to home page\n")
+        billing_type = input("1. Credit or debit card\n2. Billing to\n3. Cash\n4. Go to home page\n")
         return billing_type
 
     def credit_debit_card(self):

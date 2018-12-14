@@ -11,6 +11,10 @@ class Dealer_service:
         if choice not in range(1,6):
             raise Exception
 
+    def option_check(self,contin):
+        if contin != "1" and contin != "2":
+            raise Exception
+
     #cb = Create booking. 
     def cb_check_name(self,first_name_alpha, last_name_alpha):       
         if first_name_alpha == False or last_name_alpha == False: 
