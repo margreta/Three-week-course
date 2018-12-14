@@ -16,7 +16,7 @@ class Overview_Ui:
         while choice not in range(1,4):
             try:
                 print("Please choose 1, 2 or 3.")
-                choice = int(input("1. Look up customer\n2. Car information\n3. Go back\n"))
+                choice = int(input("1. Look up customer\n2. Car information\n3. Go to homepage\n"))
                 self.__overview_service.overview_check(choice) #hér þarf að runna í service fallinu.
             except:                
                 print("Not a valid option, please select number from 1 to 3")
@@ -44,7 +44,7 @@ class Overview_Ui:
             try:
                 print("Choose action:")
                 print("")
-                car_choice = int(input("1. Show all available cars\n2. Show rented cars\n3. Look up a specific car\n4. Show price list\n5. Go back\n"))
+                car_choice = int(input("1. Show all available cars\n2. Show rented cars\n3. Look up a specific car\n4. Show price list\n5. Go to homepage\n"))
                 self.__overview_service.car_menu_check(car_choice) #hér þarf að kalla í eitthvað í service fallinu
             except:
                 print("Not a valid option, please select number from 1 to 5")
@@ -83,9 +83,4 @@ class Overview_Ui:
         print("Kasko insurance ($50)\nChild seat ($1)")
         print("")        
 
-
-
-    def go_back(self):
-        print("Options:\n1. Go to Dealer home page.")
-        choice_back = input()
 

@@ -43,14 +43,14 @@ class Change_Booking_Ui:
 
     def edit_booking_menu(self):
         edit_choice = 7
-        while edit_choice in range(1,10):
+        while edit_choice in range(1,6):
             try:
                 print("What would you like to edit?")
                 print("")
-                edit_choice = int(input("1. Name\n2. License\n3. Email\n4. Phone\n5. Credit card insurance\n6. Start date\n7. End date\n8. Payment\n"))
+                edit_choice = int(input("1. Name\n2. License\n3. Email\n4. Phone\n5. Credit card insurance\n"))
                 self.__dealer_service.edit_menu_check(edit_choice) #hér þarf að kalla í eitthvað í service fallinu
             except:
-                print("Not a valid option, please select number from 1 to 8")
+                print("Not a valid option, please select number from 1 to 5")
                 print("")
             return edit_choice
 
@@ -84,6 +84,52 @@ class Change_Booking_Ui:
                 print("Whoops, something went wrong.")
                 print("")
         return edit_drivers_license
+
+
+    def edit_email(self,name):
+        edit_email = False
+        while edit_email == False:
+            try:
+                print("Enter new email: ")
+                edit_email = input("Email: ")
+                self.__dealer_service.edit_email_check(name, edit_email)# kalla í service fall
+                print("{} booking has been changed".format(name))
+                print("")
+            except:
+                print("Whoops, something went wrong.")
+                print("")
+        return edit_email
+
+
+    def edit_phone_number(self,name):
+        edit_phone_number = False
+        while edit_phone_number == False:
+            try:
+                print("Enter new phone number number: ")
+                edit_phone_number = input("Phone number: ")
+                # edit_phone_number_check = edit_phone_number.isnumeric()
+                self.__dealer_service.edit_phone_number(name, edit_phone_number)# kalla í service fall
+                print("{} booking has been changed".format(name))
+                print("")
+            except:
+                print("Whoops, something went wrong.")
+                print("")
+        return edit_phone_number
+
+
+    def edit_credit_card_insurance(self,name):
+        edit_credit_card_info = False
+        while edit_credit_card_info == False:
+            try:
+                print("Enter new credit card number: ")
+                edit_credit_card_info = input("Credit card number: ")
+                self.__dealer_service.edit_credit_card_insurance_check(name, edit_credit_card_info)# kalla í service fall
+                print("{} booking has been changed".format(name))
+                print("")
+            except:
+                print("Whoops, something went wrong.")
+                print("")
+        return edit_credit_card_info
 
 
 ############################################################################################################################

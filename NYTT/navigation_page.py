@@ -138,6 +138,32 @@ class Navigation_Page:
         elif edit_choice == 2: 
             self.change_booking.edit_drivers_license(name)
         elif edit_choice == 3:
-            pass
+            self.change_booking.edit_email(name)
+        elif edit_choice == 4:
+            self.change_booking.edit_phone_number(name)
+        elif edit_choice == 5:
+            self.change_booking.edit_credit_card_insurance(name)
+
+#######################################################################################    
         
-    
+    # DEALER - Overview
+
+    def go_to_overview(self):
+        overview_choice = self.overview_ui.overview_menu()
+        if overview_choice == 1:
+            self.overview_ui.look_up_customer()
+        elif overview_choice == 2:
+            car_choice = self.overview_ui.car_overview()
+            if car_choice == 1 or car_choice == 2:
+                self.overview_ui.get_car(car_choice)
+            elif car_choice == 3:
+                license_number = self.overview_ui.specific_car_input(car_choice)
+            elif car_choice == 4:
+                self.overview_ui.show_price_list()
+            elif car_choice == 5:
+                go_to_dealer_homepage = "y"
+        elif overview_choice == 3:
+            go_to_dealer_homepage = "y"
+        return go_to_dealer_homepage
+
+            

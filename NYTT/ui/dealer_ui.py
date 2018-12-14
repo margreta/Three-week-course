@@ -157,11 +157,16 @@ class Dealer_Ui:
         print("(3 of 5)")
         print("Please select date\n")
 
-        try:
-            #The end date is calculated in the main.py
-            start_date = input("Enter start date (D/M/YYYY): ")
-        except:
-            print("Please make sure you typed in correct date, note that you have to use this format D/M/YYYY")
+        no_fail_in_start_date = True
+        while no_fail_in_start_date:
+            try:
+                #The end date is calculated in the main.py
+                start_date = input("Enter start date (D/M/YYYY): ")
+                self.dealer_service.obtain_date(start_date)
+                no_fail_in_start_date = False
+            except:
+                print("Please make sure you typed in correct date, note that you have to use this format D/M/YYYY")
+        
         amount_of_days = int(input("Amount of days: "))
         print("")
        

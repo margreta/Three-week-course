@@ -125,4 +125,10 @@ class Dealer_service:
     def add_booking(self, booking):
         self.booking_repo.add_booking(booking)
 
+    #check date.
+    def obtain_date(self,start_date): 
+         date_c = datetime.datetime.strptime(start_date, "%d/%m/%Y")
+         if date_c == False:
+             raise Exception
+
 

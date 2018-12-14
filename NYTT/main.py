@@ -39,9 +39,10 @@ def main():
     dealer_ui = Dealer_Ui()
     admin_ui = Admin_Ui()
     change_booking = Change_Booking_Ui()
+    return_rental = Return_Rental()
     
-    to_homepage = True
-    while to_homepage:
+    go_to_homepage = True
+    while go_to_homepage:
         home_page.logo()
         user = navigation.go_to_homepage()
         username = navigation.go_to_login(user)
@@ -113,35 +114,15 @@ def main():
                         change_booking.cancel_booking()
                 #DEALER : return rental
                 elif dealer_choice == 3:
-                    rr.return_rental_ui()
+                    return_rental.return_rental_ui()
                     
                 #DEALER : overview
                 elif dealer_choice == 4: 
-                    ov_choice = overview_ui.overview_menu()
-                    if ov_choice == 1:
-                        overview_ui.look_up_customer()
-                    elif ov_choice == 2:
-                        car_choice = overview_ui.car_overview()
-                
-                        if car_choice == 1:
-                            overview_ui.get_car(car_choice)
-                        elif car_choice == 2:
-                            overview_ui.get_car(car_choice)
-                        elif car_choice == 3:
-                            license_number = overview_ui.specific_car_input(car_choice)
-                        elif car_choice == 4:
-                            overview_ui.show_price_list()
-                        elif car_choice == 5:
-                            pass
-                            #send down to domain
-                            # #car_information_menu() #send to car_information_menu class #####
-                    elif ov_choice == 3:
-                        pass
-                        #Hér er farið til baka í dealer homepage
-                        overview_ui.go_back()
-                #DEALER : log out (go back -- þarf að laga í print setningu)
+                    to_dealer_homepage = navigation.go_to_overview()
+                    break                       
+                #DEALER : log out
                 elif dealer_choice == 5:
-                    go_to_homepage = "y"
+                    to_dealer_homepage = "n"
                     break
 
         elif username == "admin":
@@ -151,7 +132,7 @@ def main():
                 counter = 0
                 while again == "y":
                     license_num, car_type, confirm, again = admin_ui.create_car_page()
-                    price = car_type_price(car_type)
+                    price = navigation.car_type_price(car_type)
                     admin_ui.create_the_car(license_num, car_type, price)
                     counter += 1
                 admin_ui.counter_added_cars(counter)
