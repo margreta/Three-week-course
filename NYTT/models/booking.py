@@ -16,7 +16,7 @@ class Booking():
         self.booking_status = booking_status
 
     def __str__(self):
-        return "{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(self.name, self.driver_license, self.email, self.phone_num,
+        return "{},{},{},{},{},{},{},{},{},{},{},{},{}\n".format(self.name, self.driver_license, self.email, self.phone_num,
                                                                     self.card_insurance, self.start_date, self.end_date, 
                                                                     self.license_plate, self.car_type, self.price,
                                                                     self.extras, self.payment_type, self.booking_status)

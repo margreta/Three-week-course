@@ -41,6 +41,7 @@ def main():
     change_booking = Change_Booking_Ui()
     return_rental = Return_Rental()
     
+    #Homepage and login.
     go_to_homepage = True
     while go_to_homepage:
         home_page.logo()
@@ -48,6 +49,7 @@ def main():
         username = navigation.go_to_login(user)
 
         confirm = "n"
+        #dealer homepage.
         if username == "dealer":
             to_dealer_homepage = "y"
             while to_dealer_homepage == "y":
@@ -125,7 +127,8 @@ def main():
                 #DEALER : overview
                 elif dealer_choice == 4: 
                     to_dealer_homepage = navigation.go_to_overview()
-                    break                       
+                    to_dealer_homepage = "y"
+                    continue                      
                 #DEALER : log out
                 elif dealer_choice == 5:
                     to_dealer_homepage = "n"
