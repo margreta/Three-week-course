@@ -87,7 +87,7 @@ class Navigation_Page:
         total_price = 0 
         #Calculates extras, if customer wants.   -- ATH hér þarf að bæta við möguleika að velja ekkert extra. 
         self.dealer_ui.create_booking_4_of_5(inp_car_type)
-        car_pick = self.dealer_ui.picking_car()
+        car_pick = self.dealer_ui.picking_car(start_date)
         total_price, kasko_child = self.extras(total_price)
         current_page += 1
         return total_price, kasko_child, car_pick, current_page
@@ -131,7 +131,9 @@ class Navigation_Page:
         return change_choice
 
     def edit_booking(self):
-        name = self.change_booking.find_edit_booking_name()
+        name_test = False
+        while name_test== False:
+            name, name_test = self.change_booking.find_edit_booking_name()
         edit_choice = self.change_booking.edit_booking_menu()
         if edit_choice == 1:
             self.change_booking.edit_name(name)
@@ -162,8 +164,11 @@ class Navigation_Page:
                 self.overview_ui.show_price_list()
             elif car_choice == 5:
                 go_to_dealer_homepage = "y"
+                return go_to_dealer_homepage
         elif overview_choice == 3:
             go_to_dealer_homepage = "y"
-        return go_to_dealer_homepage
+            return go_to_dealer_homepage
+        
 
-            
+#######################################################################################    
+

@@ -1,7 +1,7 @@
 License_plate,Type,Price,Status
 OFD73,A,4000,Rented
-KSA55,B,3000,Rented
-KSA55,B,3000,Rented
+KSA55,B,3000,Available
+KSA55,B,3000,Available
 UEI44,C,2000,Rented
 ILL32,C,2000,Available
 SKO32,A,4000,Rented
@@ -24,3 +24,7 @@ JONNI,B,3000,Available
 CDS34,C,2000,Rented
 BHJ67,B,3000,Available
 POI98,C,2000,Available
+ERT65,C,2000,Available
+ERT23,B,3000,Available
+ERT55,B,3000,Available
+ERT66,A,4000,Available

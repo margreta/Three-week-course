@@ -197,16 +197,18 @@ class Dealer_Ui:
         print("")
     
     #Picking a car from the list that is printed. This will then change the status in the car csv
-    def picking_car(self):
+    def picking_car(self,start_date): 
         car_picking = False
         while car_picking == False:
             try:
                 car_pick = input("Select car: ").upper()
-                self.__car_service.car_choice(car_pick)
+                tday = datetime.datetime.today()
+                tday_str =tday.strftime("%d/%m/%Y")
+                self.__car_service.car_choice(car_pick,start_date,tday_str) #bætti start_date við
                 car_picking = True
             except:
-                print("Whoops")
-        return car_pick
+                print("Whoops") #laga?
+        return car_pick,tday_str
 
     def extras(self):
         print("Extras: ")
@@ -227,13 +229,13 @@ class Dealer_Ui:
     def credit_debit_card(self):
         card_name = input("Enter name of carholder: ")
         card_number = input("Enter card number: ")
-        validation_time = input("Enter validation time (M/YY)")
+        validation_time = input("Enter validation time (M/YY): ")
             # Setja hér tékk hvort validation_time sé "stærri" tala en dagurinn í dag 
             # ef svo er þá kemur villa að kortið sé útrunnið
         return card_name, card_number, validation_time
 
     def confirm_billing(self):
-        confirm = input("Confirm payment? (y/n)")
+        confirm = input("Confirm payment? (y/n): ")
         if confirm == "y":
             print("Your payment has been made.")
         elif confirm == "n":

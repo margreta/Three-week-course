@@ -56,7 +56,10 @@ def main():
                     #All 5 pages of create booking process. 
                     name, driver_license, email, phone_num, current_page = navigation.create_booking_page_1_of_5(confirm)
                     unfinished = True
+                    break_to_get_to_homepage = "y"
                     while unfinished:
+                        if break_to_get_to_homepage == "y":
+                            break
                         continue_vs_go_to_dealer_homepage = dealer_ui.options()
                         if continue_vs_go_to_dealer_homepage == "1":
                             if current_page == 1:
@@ -64,11 +67,12 @@ def main():
                             elif current_page == 2:
                                 start_date, amount_of_days, inp_car_type, price, end_date, current_page = navigation.create_booking_page_3_of_5(current_page)
                             elif current_page == 3:           
-                                total_price, kasko_child, car_pick, current_page = navigation.create_booking_page_4_of_5(inp_car_type,current_page)
+                                total_price, kasko_child, car_pick, current_page = navigation.create_booking_page_4_of_5(inp_car_type,current_page,start_date)
                                 unfinished = False
                         elif continue_vs_go_to_dealer_homepage == "2":
+                            break_to_get_to_homepage = "y"
                             to_dealer_homepage = "y"
-                            break
+                            continue
 
 
                     unconfirmed_billing_type = True
@@ -126,22 +130,24 @@ def main():
                     break
 
         elif username == "admin":
-            admin_choice = admin_ui.admin_home_page()
-            if admin_choice == 1:
-                again = "y"
-                counter = 0
-                while again == "y":
-                    license_num, car_type, confirm, again = admin_ui.create_car_page()
-                    price = navigation.car_type_price(car_type)
-                    admin_ui.create_the_car(license_num, car_type, price)
-                    counter += 1
-                admin_ui.counter_added_cars(counter)
-            elif admin_choice == 2:
-                admin_ui.remove_car()
-            elif admin_choice == 3:
-                admin_ui.mark_repair()
-            elif admin_choice == 4:
-                go_to_homepage = "y"
-                
+            to_admin_homepage = "y"
+            while to_admin_homepage == "y":
+                admin_choice = admin_ui.admin_home_page()
+                if admin_choice == 1:
+                    again = "y"
+                    counter = 0
+                    while again == "y":
+                        license_num, car_type, confirm, again = admin_ui.create_car_page()
+                        price = navigation.car_type_price(car_type)
+                        admin_ui.create_the_car(license_num, car_type, price)
+                        counter += 1
+                    admin_ui.counter_added_cars(counter)
+                elif admin_choice == 2:
+                    admin_ui.remove_car()
+                elif admin_choice == 3:
+                    admin_ui.mark_repair()
+                elif admin_choice == 4:
+                    go_to_homepage = "y"
+                    
 
 main()

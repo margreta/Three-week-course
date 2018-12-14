@@ -24,7 +24,8 @@ class Car_Service:
     def cb_cancel_available(self,license_num):
         return self.__car_repos.cancel_available(license_num)
 
-    def car_choice(self, car_pick):
+
+    def car_choice(self, car_pick,start_date,tday_str):
         if car_pick == False:
             raise Exception
-        self.__car_repos.mark_as_rented(car_pick)
+        self.__car_repos.mark_as_rented(car_pick,start_date,tday_str)

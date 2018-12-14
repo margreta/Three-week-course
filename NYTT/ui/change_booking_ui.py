@@ -34,21 +34,21 @@ class Change_Booking_Ui:
                 first_name = input("First name: ")
                 last_name = input("Last name: ")
                 name = first_name.capitalize() + " " + last_name.capitalize()
-                self.__dealer_service.edit_name(name)# kalla í service fall
+                self.__dealer_service.edit_name(name)
                 name_test = True
             except:
                 print("This name does not exist in the system, please try again.")
                 print("")
-        return name
+        return name, name_test
 
     def edit_booking_menu(self):
-        edit_choice = 7
+        edit_choice = 5
         while edit_choice in range(1,6):
             try:
                 print("What would you like to edit?")
                 print("")
                 edit_choice = int(input("1. Name\n2. License\n3. Email\n4. Phone\n5. Credit card insurance\n"))
-                self.__dealer_service.edit_menu_check(edit_choice) #hér þarf að kalla í eitthvað í service fallinu
+                self.__dealer_service.edit_menu_check(edit_choice)
             except:
                 print("Not a valid option, please select number from 1 to 5")
                 print("")
