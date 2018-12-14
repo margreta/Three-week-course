@@ -6,6 +6,8 @@ from ui.admin_ui import Admin_Ui
 from ui.overview_ui import Overview_Ui
 from ui.return_rental_ui import Return_Rental
 from ui.change_booking_ui import Change_Booking_Ui
+from repository.car_repo import Car_Repo
+from service.car_service import Car_Service
 
 from models.car import Car
 
@@ -114,6 +116,8 @@ def main():
     overview_ui = Overview_Ui()
     rr = Return_Rental()
     cb = Change_Booking_Ui()
+    car_repo = Car_Repo()
+    car_service = Car_Service()
     
 
     
@@ -219,13 +223,17 @@ def main():
                     change_choice = cb.change_booking_menu()
                     #Edit booking.
                     if change_choice == 1:
-                        cb.edit_booking_name_input()
-                        edit_choice = cb.edit_booking_menu()
-                        if edit_choice == 1:
-                            cb.edit_booking_name()
-                        elif edit_choice == 2:
+                        name = cb.find_edit_booking_name()
+                        e_choice = cb.edit_booking_menu() #e_choice stands for edit_choice
+                        #If name is changed
+                        if e_choice == 1:
+                            cb.edit_name(name)
+                        #If drivers license is changed
+                        elif e_choice == 2:
+                            cb.edit_drivers_license(name)
+                        #If email is changed
+                        elif e_choice == 3:
                             pass
-                    #Cancel booking.
                     elif change_choice == 2:
                         cb.cancel_booking()
                 #DEALER : return rental

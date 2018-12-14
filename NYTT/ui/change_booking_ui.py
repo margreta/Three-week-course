@@ -26,21 +26,20 @@ class Change_Booking_Ui:
 #EDIT BOOKING UI
 
 
-    def edit_booking_name_input(self):
-        name = False
-        while name == False:
-            # try:
-            print("Enter name of editing customer: ")
-            first_name = input("First name: ")
-            last_name = input("Last name: ")
-            name = first_name.capitalize() + " " + last_name.capitalize()
-            self.__dealer_service.edit_name(name)# kalla í service fall
-            name = True
-            # except:
-            #     print("This name does not exist in the system, please try again.")
-            #     print("")
+    def find_edit_booking_name(self):
+        name_test = False
+        while name_test == False:
+            try:
+                print("Enter name of editing customer: ")
+                first_name = input("First name: ")
+                last_name = input("Last name: ")
+                name = first_name.capitalize() + " " + last_name.capitalize()
+                self.__dealer_service.edit_name(name)# kalla í service fall
+                name_test = True
+            except:
+                print("This name does not exist in the system, please try again.")
+                print("")
         return name
-
 
     def edit_booking_menu(self):
         edit_choice = 7
@@ -51,28 +50,40 @@ class Change_Booking_Ui:
                 edit_choice = int(input("1. Name\n2. License\n3. Email\n4. Phone\n5. Credit card insurance\n6. Start date\n7. End date\n8. Payment\n"))
                 self.__dealer_service.edit_menu_check(edit_choice) #hér þarf að kalla í eitthvað í service fallinu
             except:
-                print("Not a valid option, please select number from 1 to 3")
+                print("Not a valid option, please select number from 1 to 8")
                 print("")
             return edit_choice
 
-    #If the edit_choice is 1 then we are changing the name 
-
-    def edit_booking_name(self):
-        name = False
-        while name == False:
+    def edit_name(self,name):
+        edit_name = False
+        while edit_name == False:
             try:
-                print("Enter new name: ")
-                first_name = input("First name: ")
-                last_name = input("Last name: ")
-                edit_name = first_name.capitalize() + " " + last_name.capitalize()
+                print("Enter new customer name: ")
+                edit_first_name = input("First name: ")
+                edit_last_name = input("Last name: ")
+                edit_name = edit_first_name.capitalize() + " " + edit_last_name.capitalize()
                 self.__dealer_service.edit_name_check(name, edit_name)# kalla í service fall
-                print("Name has been changed")
+                print("{} booking has been changed".format(edit_name))
                 print("")
-                name = True
             except:
                 print("Whoops, something went wrong.")
                 print("")
         return edit_name
+
+
+    def edit_drivers_license(self,name):
+        edit_drivers_license = False
+        while edit_drivers_license == False:
+            try:
+                print("Enter new drivers license number: ")
+                edit_drivers_license = input("Drivers license: ")
+                self.__dealer_service.edit_drivers_license_check(name, edit_drivers_license)# kalla í service fall
+                print("{} booking has been changed".format(name))
+                print("")
+            except:
+                print("Whoops, something went wrong.")
+                print("")
+        return edit_drivers_license
 
 
 ############################################################################################################################

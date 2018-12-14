@@ -84,7 +84,7 @@ class Dealer_service:
             raise Exception
 
 
-    #Edit booking.
+#Edit booking.
     def edit_name(self, name):
         if name == False:
             raise Exception
@@ -93,12 +93,12 @@ class Dealer_service:
     def edit_menu_check(self, edit_choice):
         if edit_choice not in range (1,10):
             raise Exception
-        
 
-    def edit_name_check(self, name, edit_name):
-        if name == True:
-            raise Exception
-        self.booking_repo.edit_booking_name(edit_name, name) 
+    def edit_name_check(self,name,edit_name):
+        self.booking_repo.edit_booking_name(name, edit_name)
+
+    def edit_drivers_license_check(self,name,edit_drivers_license):
+        self.booking_repo.edit_booking_driver_license(name, edit_drivers_license)
 
     #Cancel booking.
     def cancel_check(self, name):
